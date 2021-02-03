@@ -536,7 +536,7 @@ NS_INLINE TYIndexSection TYMakeIndexSection(NSInteger index, NSInteger section) 
         return;
     }
     TYPagerScrollDirection direction = TYPagerScrollDirectionRight;
-    if ((scrollView.contentOffset.x < 0 && targetContentOffset->x <= 0) || (targetContentOffset->x < scrollView.contentOffset.x && scrollView.contentOffset.x < scrollView.contentSize.width - scrollView.frame.size.width)) {
+    if ((scrollView.contentOffset.x < 0 && targetContentOffset->x <= 0) || (targetContentOffset->x < scrollView.contentOffset.x && scrollView.contentOffset.x < scrollView.contentSize.width - scrollView.frame.size.width) || (CGPointEqualToPoint(scrollView.contentOffset, *targetContentOffset) && velocity.x < 0)) {
         direction = TYPagerScrollDirectionLeft;
     }
     TYIndexSection indexSection = [self nearlyIndexPathForIndexSection:_indexSection direction:direction];
